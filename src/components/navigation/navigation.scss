@@ -1,0 +1,46 @@
+#navbar {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	padding: 0;
+	color: white;
+	font-size: 1.2rem;
+	margin: 0;
+	width: auto;
+	max-width: 90rem;
+	margin: auto;
+
+	li {
+		line-height: 3.14;
+		padding: 0 1rem;
+	}
+
+	#menu {
+		max-height: 50px;
+		max-width: 50px;
+		vertical-align: middle;
+	}
+}
+
+.black {
+	background: rgb(99, 96, 96);
+	opacity: 0.8;
+}
+
+#side-menu {
+	height: 100%;
+	width: 80%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+
+#side {
+	height: 100%;
+	width: 80%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgb(231, 38, 38);
+	z-index: 9999;
+}

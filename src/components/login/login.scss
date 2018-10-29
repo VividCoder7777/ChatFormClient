@@ -1,2 +1,69 @@
-$mycolor: dumb;
-$poop: dsadsa;
+$submitColor: rgb(63, 63, 206);
+
+// sass map
+// map-get($object, key)
+$object: (hello: blue);
+
+$desktop: 450px;
+$small-mobile: 360px;
+
+$input-height: 2rem;
+
+@mixin desktop {
+	@media (min-width: #{$desktop}) {
+		@content;
+	}
+}
+
+@mixin small-mobile {
+	@media (max-width: #{$small-mobile}) {
+		@content;
+	}
+}
+
+// create function using @function name($param){}
+.form {
+	margin: auto;
+	line-height: 1.6;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	margin-top: 2rem;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	padding: 50px;
+	width: auto;
+	min-width: 250px;
+
+	@include desktop {
+		max-width: 420px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	@include small-mobile {
+		padding: 25px;
+	}
+
+	input {
+		display: block;
+		width: 100%;
+		height: $input-height;
+	}
+
+	button {
+		margin-top: 15px;
+		display: block;
+		background: $submitColor;
+		color: white;
+		border: 0.2rem solid rgb(51, 78, 90);
+		height: $input-height;
+	}
+
+	button:active {
+		opacity: 0.2;
+	}
+
+	.error-message {
+		color: red;
+	}
+}

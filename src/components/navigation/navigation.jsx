@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './navigation.css';
+import './navigation.scss';
 import { Route, Link } from 'react-router-dom';
+import MenuItems from './menu-items';
 
 class navigation extends Component {
 	constructor(props) {
@@ -11,12 +12,7 @@ class navigation extends Component {
 		return (
 			<div className="black">
 				<ul id="navbar">
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="/login">Login</Link>
-					</li>
+					<MenuItems />
 				</ul>
 			</div>
 		);

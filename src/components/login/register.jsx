@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import './login.scss';
-import '../utility/user-api';
 import { Link } from 'react-router-dom';
+import UserAPI from '../utility/user-api.js';
 
-class Login extends Component {
+class Register extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			invalidLogin: false,
-			password: false,
-			username: false
-		};
+		this.state = { invalidInformation: false };
 	}
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-
+		console.log('HUH?');
 		if (event.target.checkValidity()) {
 			// change error message class if any
 			this.setState({
@@ -23,13 +19,23 @@ class Login extends Component {
 				password: false
 			});
 
-			// check if account can be created
+			let userInfo = {
+				username: event.target.elements['username'].value,
+				password: event.target.elements['password'].value
+			};
+
+			console.log(userInfo);
+
+			UserAPI.register(userInfo)
+				.then((result) => {
+					console.log(result);
+				})
+				.catch((error) => {});
+
+			// check if username and password matches in DB
 		} else {
 			// TODO: move this into a method
-			let inputError = {
-				username: this.state.username,
-				password: this.state.password
-			};
+			let inputError = {};
 
 			for (let input of event.target.elements) {
 				if (!input.checkValidity()) {
@@ -45,12 +51,12 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div className="loginContainer">
+			<div>
 				<div className="form">
 					<form onSubmit={this.handleSubmit} noValidate>
-						<h3>Sign In:</h3>
-						<p className={this.state.invalidLogin ? 'visible' : 'hidden'}>
-							Username or password is incorrect. Please try again.
+						<h3>Create Your Account:</h3>
+						<p className={this.state.invalidInformation ? 'visible' : 'hidden'}>
+							Username is already taken please try again.
 						</p>
 						<section>
 							<label for="username">Username: </label>
@@ -67,12 +73,12 @@ class Login extends Component {
 							</label>
 						</section>
 						<div className="flex-right">
-							<button>Login</button>
+							<button>Create</button>
 						</div>
 						<p className="center-text">
-							Don't have an account?{' '}
-							<Link to="/register">
-								<span className="link">Register</span>
+							Already have an account?{' '}
+							<Link to="/login">
+								<span className="link">Login</span>
 							</Link>
 						</p>
 					</form>
@@ -82,4 +88,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default Register;
