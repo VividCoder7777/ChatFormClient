@@ -6,29 +6,40 @@ import UserAPI from '../utility/user-api.js';
 class Register extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { invalidInformation: false };
+		this.state = { formErrors: undefined };
 	}
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log('HUH?');
+
 		if (event.target.checkValidity()) {
 			// change error message class if any
 			this.setState({
 				username: false,
-				password: false
+				password: false,
+				retypepassword: false
 			});
 
 			let userInfo = {
 				username: event.target.elements['username'].value,
-				password: event.target.elements['password'].value
+				password: event.target.elements['password'].value,
+				retypepassword: event.target.elements['retypepassword'].value
 			};
 
-			console.log(userInfo);
-
+			// try to register user
 			UserAPI.register(userInfo)
 				.then((result) => {
+					console.log('dASDASA RESULTS???');
 					console.log(result);
+					// redirect user if no errors
+					if (!result.data.errors) {
+						let data = result.data;
+						this.props.history.push(data.redirect);
+					} else {
+						// display errors
+						console.log('???');
+						this.setState({ formErrors: result.data.errors });
+					}
 				})
 				.catch((error) => {});
 
@@ -49,18 +60,28 @@ class Register extends Component {
 		}
 	};
 
+	displayValidationErrors = () => {
+		if (this.state.formErrors) {
+			let errorElements = [];
+
+			for (let error of this.state.formErrors) {
+				errorElements.push(<p>{error.msg}</p>);
+			}
+
+			return <section id="errorList">{errorElements}</section>;
+		}
+	};
+
 	render() {
 		return (
 			<div>
 				<div className="form">
 					<form onSubmit={this.handleSubmit} noValidate>
 						<h3>Create Your Account:</h3>
-						<p className={this.state.invalidInformation ? 'visible' : 'hidden'}>
-							Username is already taken please try again.
-						</p>
+						{this.displayValidationErrors()}
 						<section>
 							<label for="username">Username: </label>
-							<input name="username" type="text" required />
+							<input name="username" type="text" required placeholder="Email ex: email@example.com" />
 							<label className={(this.state.username ? 'show' : 'hidden') + ' error-message'}>
 								* Username is required
 							</label>
@@ -70,6 +91,13 @@ class Register extends Component {
 							<input name="password" type="password" required />
 							<label className={(this.state.password ? 'show' : 'hidden') + ' error-message'}>
 								* Password is required
+							</label>
+						</section>
+						<section>
+							<label for="retypepassword">Re-Enter Password:</label>
+							<input type="password" name="retypepassword" required />
+							<label className={(this.state.retypepassword ? 'show' : 'hidden') + ' error-message'}>
+								* Please input the same password
 							</label>
 						</section>
 						<div className="flex-right">

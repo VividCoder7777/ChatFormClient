@@ -33,7 +33,6 @@ class App extends Component {
 		window.addEventListener('resize', () => {
 			let viewportWidth = document.documentElement.clientWidth;
 
-			console.log('aloha');
 			if (viewportWidth <= mobileWidth) {
 				this.setState({
 					isMobile: true

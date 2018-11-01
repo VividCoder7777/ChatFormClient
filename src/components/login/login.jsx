@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './login.scss';
-import '../utility/user-api';
+import UserAPI from '../utility/user-api';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
@@ -23,7 +23,19 @@ class Login extends Component {
 				password: false
 			});
 
-			// check if account can be created
+			UserAPI.login({
+				username: event.target.elements['username'].value,
+				password: event.target.elements['password'].value
+			})
+				.then((result) => {
+					if (result.data.errors) {
+						this.setState({ invalidLogin: true });
+					} else {
+					}
+				})
+				.catch((error) => {
+					console.log('error is ', error);
+				});
 		} else {
 			// TODO: move this into a method
 			let inputError = {
@@ -43,15 +55,25 @@ class Login extends Component {
 		}
 	};
 
+	displayLoginErrors = () => {
+		if (this.state.invalidLogin) {
+			return (
+				<section id="errorList">
+					<p className={this.state.invalidLogin ? 'visible' : 'hidden'}>
+						Username or password is incorrect. Please try again.
+					</p>
+				</section>
+			);
+		}
+	};
+
 	render() {
 		return (
 			<div className="loginContainer">
 				<div className="form">
 					<form onSubmit={this.handleSubmit} noValidate>
 						<h3>Sign In:</h3>
-						<p className={this.state.invalidLogin ? 'visible' : 'hidden'}>
-							Username or password is incorrect. Please try again.
-						</p>
+						{this.displayLoginErrors()}
 						<section>
 							<label for="username">Username: </label>
 							<input name="username" type="text" required />

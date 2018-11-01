@@ -10,17 +10,20 @@ class LoginAPI {
 		});
 	}
 
-	Login({ username, password }) {
-		return this.instance.get('/', {
+	login({ username, password }) {
+		console.log(username, password);
+		console.log('making request');
+		return this.instance.post('/login', {
 			username,
 			password
 		});
 	}
 
-	register({ username, password }) {
+	register({ username, password, retypepassword }) {
 		return this.instance.post('/register', {
 			username,
-			password
+			password,
+			retypepassword
 		});
 	}
 }
