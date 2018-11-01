@@ -28,9 +28,15 @@ class Login extends Component {
 				password: event.target.elements['password'].value
 			})
 				.then((result) => {
+					console.log(result.data);
 					if (result.data.errors) {
+						console.log('THERE ARE ERRORS');
+
 						this.setState({ invalidLogin: true });
 					} else {
+						// successful, redirect user after obtaining web token
+						console.log('REDIRECTING!');
+						this.props.history.push(result.data.redirect);
 					}
 				})
 				.catch((error) => {
@@ -65,6 +71,10 @@ class Login extends Component {
 				</section>
 			);
 		}
+	};
+
+	storeToken = () => {
+		// store token in local storage
 	};
 
 	render() {
