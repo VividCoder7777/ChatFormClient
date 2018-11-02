@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './components/login/login';
 import Home from './components/home/home';
 import NavBar from './components/navigation/navigation';
@@ -8,6 +8,8 @@ import NavBarMobile from './components/navigation/navigation-mobile';
 import Footer from './components/footer/footer';
 import PageNotFound from './components/web-status-error/page-not-found';
 import Register from './components/login/register';
+import Logout from './components/logout/logout';
+import UserAPI from './components/utility/user-api';
 
 class App extends Component {
 	constructor(props) {
@@ -45,6 +47,13 @@ class App extends Component {
 		});
 	}
 
+	checkIfUserIsAuthenticated = () => {
+		UserAPI.isAuthenticated(process.env.REACT_APP_JWT_KEY).then((result) => {
+			console.log(result);
+			return false;
+		});
+	};
+
 	render() {
 		return (
 			<div className="App">
@@ -57,12 +66,34 @@ class App extends Component {
 						}
 					}}
 				/>
-				<Switch>
-					<Route exact path="/login" component={Login} />
-					<Route path="/register" component={Register} />
-					<Route exact path="/" component={Home} />
-					<Route component={PageNotFound} />
-				</Switch>
+				<div id="content">
+					<Switch>
+						<Route exact path="/login" component={Login} />
+						<Route exact path="/logout" component={Logout} />
+						<Route path="/register" component={Register} />
+						<Route exact path="/" component={Home} />
+						<Route
+							path="/protected"
+							render={(props) => {
+								const isUserAuthenticated = this.checkIfUserIsAuthenticated();
+								console.log('value is ', isUserAuthenticated);
+								if (isUserAuthenticated) {
+									return <p>Hello</p>;
+								} else {
+									return (
+										<Redirect
+											to={{
+												pathname: '/login',
+												state: { message: 'You must login first to access this page' }
+											}}
+										/>
+									);
+								}
+							}}
+						/>
+						<Route component={PageNotFound} />
+					</Switch>
+				</div>
 				<div>
 					<Footer />
 				</div>

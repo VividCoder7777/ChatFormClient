@@ -36,6 +36,8 @@ class Login extends Component {
 					} else {
 						// successful, redirect user after obtaining web token
 						console.log('REDIRECTING!');
+
+						this.storeToken(result.data.token);
 						this.props.history.push(result.data.redirect);
 					}
 				})
@@ -73,13 +75,24 @@ class Login extends Component {
 		}
 	};
 
-	storeToken = () => {
+	storeToken = (value) => {
 		// store token in local storage
+		window.localStorage.setItem(process.env.REACT_APP_JWT_KEY, value);
+	};
+
+	displayMessage = () => {
+		if (this.props.location.state) {
+			const message = this.props.location.state.message;
+			if (message) {
+				return <h3 id="message">{message}</h3>;
+			}
+		}
 	};
 
 	render() {
 		return (
 			<div className="loginContainer">
+				{this.displayMessage()}
 				<div className="form">
 					<form onSubmit={this.handleSubmit} noValidate>
 						<h3>Sign In:</h3>

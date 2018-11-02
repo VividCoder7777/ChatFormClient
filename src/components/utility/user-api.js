@@ -26,6 +26,14 @@ class LoginAPI {
 			retypepassword
 		});
 	}
+
+	isAuthenticated(jwt) {
+		return this.instance.post('/authentication-status', {
+			headers: {
+				Authorization: 'Bearer ' + jwt
+			}
+		});
+	}
 }
 
 export default new LoginAPI();

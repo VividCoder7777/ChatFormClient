@@ -21,6 +21,13 @@ $input-height: 2rem;
 	}
 }
 
+.loginContainer {
+	#message {
+		color: red;
+		text-align: center;
+	}
+}
+
 // create function using @function name($param){}
 .form {
 	margin: auto;
