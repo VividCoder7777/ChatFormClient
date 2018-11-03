@@ -4,44 +4,16 @@ import UserAPI from '../utility/user-api';
 import JWTHelper from '../utility/jwt';
 
 class ProtectedRoute extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			isAuthenticated: false,
-			checkedAuthStatus: false
-		};
-	}
-
 	componentDidMount() {
-		// call check aith
-		if (JWTHelper.hasToken()) {
-			UserAPI.isAuthenticated(JWTHelper.getAuthToken()).then((result) => {
-				console.log('results are ', result);
-				if (result.data.user) {
-					this.setState({
-						checkedAuthStatus: true,
-						isAuthenticated: true
-					});
-				} else {
-					this.setState({
-						checkedAuthStatus: true,
-						isAuthenticated: false
-					});
-					JWTHelper.clearToken();
-				}
-			});
-		} else {
-			this.setState({
-				checkedAuthStatus: true
-			});
-		}
+		this.props.authCallback();
 	}
 
 	authCallback = () => {};
 
 	displayContent = () => {
-		if (this.state.checkedAuthStatus) {
-			if (this.state.isAuthenticated) {
+		console.log(this.props.checkedAuthStatus);
+		if (this.props.checkedAuthStatus) {
+			if (this.props.isAuthenticated) {
 				// return routes
 				return <p>Wow you authenticated</p>;
 			} else {

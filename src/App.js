@@ -11,14 +11,41 @@ import Register from './components/login/register';
 import Logout from './components/logout/logout';
 import UserAPI from './components/utility/user-api';
 import ProtectedRoute from './components/protected-content/protected-route';
+import JWTHelper from './components/utility/jwt';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isMobile: false
+			isMobile: false,
+			isAuthenticated: false,
+			checkedAuthStatus: false
 		};
 	}
+
+	authCallback = () => {
+		if (JWTHelper.hasToken()) {
+			UserAPI.isAuthenticated(JWTHelper.getAuthToken()).then((result) => {
+				console.log('results are ', result);
+				if (result.data.user) {
+					this.setState({
+						checkedAuthStatus: true,
+						isAuthenticated: true
+					});
+				} else {
+					this.setState({
+						checkedAuthStatus: true,
+						isAuthenticated: false
+					});
+					JWTHelper.clearToken();
+				}
+			});
+		} else {
+			this.setState({
+				checkedAuthStatus: true
+			});
+		}
+	};
 
 	componentDidMount() {
 		let viewportWidth = document.documentElement.clientWidth;
@@ -66,7 +93,19 @@ class App extends Component {
 						<Route exact path="/logout" component={Logout} />
 						<Route path="/register" component={Register} />
 						<Route exact path="/" component={Home} />
-						<Route path="/protected" component={ProtectedRoute} />
+						<Route
+							path="/protected"
+							render={(props) => {
+								return (
+									<ProtectedRoute
+										{...props}
+										authCallback={this.authCallback}
+										isAuthenticated={this.state.isAuthenticated}
+										checkedAuthStatus={this.state.checkedAuthStatus}
+									/>
+								);
+							}}
+						/>
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>
