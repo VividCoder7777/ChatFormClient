@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import JWTHelper from '../utility/jwt';
 
 class MenuItems extends Component {
 	constructor(props) {
@@ -8,7 +9,8 @@ class MenuItems extends Component {
 	}
 
 	isUserLoggedIn = () => {
-		const loggedIn = window.localStorage.hasOwnProperty(process.env.REACT_APP_JWT_KEY);
+		// TODO: change this to your jwt class
+		const loggedIn = JWTHelper.getAuthToken();
 
 		if (loggedIn) {
 			return <Link to="/logout">Logout</Link>;

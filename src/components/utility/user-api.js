@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Login from '../login/login';
 
 class LoginAPI {
 	constructor() {
@@ -11,8 +10,6 @@ class LoginAPI {
 	}
 
 	login({ username, password }) {
-		console.log(username, password);
-		console.log('making request');
 		return this.instance.post('/login', {
 			username,
 			password
@@ -28,11 +25,15 @@ class LoginAPI {
 	}
 
 	isAuthenticated(jwt) {
-		return this.instance.post('/authentication-status', {
-			headers: {
-				Authorization: 'Bearer ' + jwt
+		return this.instance.post(
+			'/authentication-status',
+			{},
+			{
+				headers: {
+					Authorization: 'Bearer ' + jwt
+				}
 			}
-		});
+		);
 	}
 }
 
