@@ -24,15 +24,15 @@ class App extends Component {
 		};
 	}
 
-	authCallback = () => {
-		console.log('AUTH CALLBACK');
+	checkIfUserIsAuthenticated = () => {
 		if (JWTHelper.hasToken()) {
 			UserAPI.isAuthenticated(JWTHelper.getAuthToken()).then((result) => {
 				console.log('results are ', result);
 				if (result.data.user) {
 					this.setState({
 						checkedAuthStatus: true,
-						isAuthenticated: true
+						isAuthenticated: true,
+						user: result.data.user
 					});
 				} else {
 					this.setState({
@@ -48,6 +48,10 @@ class App extends Component {
 				isAuthenticated: false
 			});
 		}
+	};
+
+	authCallback = () => {
+		this.checkIfUserIsAuthenticated();
 	};
 
 	logoutCallback = () => {
@@ -82,6 +86,8 @@ class App extends Component {
 				});
 			}
 		});
+
+		this.checkIfUserIsAuthenticated();
 	}
 
 	// get data

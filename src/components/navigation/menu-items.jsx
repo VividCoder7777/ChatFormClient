@@ -13,16 +13,19 @@ class MenuItems extends Component {
 
 		if (this.props.isAuthenticated) {
 			return (
-				<React.Fragment>
+				<div id="user-menu">
 					<Link to="/profile">{user ? user.username : 'Logout'}</Link>
 					<div className="submenu">
 						<ul>
+							<li>
+								<Link to="/protected/profile">Profile</Link>
+							</li>
 							<li>
 								<Link to="/logout">Logout</Link>
 							</li>
 						</ul>
 					</div>
-				</React.Fragment>
+				</div>
 			);
 		} else {
 			return <Link to="/login">Login</Link>;
@@ -42,10 +45,9 @@ class MenuItems extends Component {
 				<li>
 					<Link to="/protected/shop">Shop</Link>
 				</li>
-				<li>
-					<Link to="/protected/profile">Profile</Link>
-				</li>
-				<li>{this.isUserLoggedIn()}</li>
+				<ul id="user-actions">
+					<li>{this.isUserLoggedIn()}</li>
+				</ul>
 			</React.Fragment>
 		);
 	}
