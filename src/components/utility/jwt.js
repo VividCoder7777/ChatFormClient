@@ -5,6 +5,10 @@ class JWT {
 		return authToken ? true : false;
 	};
 
+	setToken = (value) => {
+		window.localStorage.setItem(process.env.REACT_APP_JWT_KEY, value);
+	};
+
 	getAuthToken() {
 		let authToken = window.localStorage.getItem(process.env.REACT_APP_JWT_KEY);
 

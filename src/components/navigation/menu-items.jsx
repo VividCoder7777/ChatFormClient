@@ -9,14 +9,28 @@ class MenuItems extends Component {
 	}
 
 	isUserLoggedIn = () => {
-		// TODO: change this to your jwt class
-		const loggedIn = JWTHelper.getAuthToken();
+		let user = this.getUser();
 
-		if (loggedIn) {
-			return <Link to="/logout">Logout</Link>;
+		if (this.props.isAuthenticated) {
+			return (
+				<React.Fragment>
+					<Link to="/profile">{user ? user.username : 'Logout'}</Link>
+					<div className="submenu">
+						<ul>
+							<li>
+								<Link to="/logout">Logout</Link>
+							</li>
+						</ul>
+					</div>
+				</React.Fragment>
+			);
 		} else {
 			return <Link to="/login">Login</Link>;
 		}
+	};
+
+	getUser = () => {
+		return this.props.user ? this.props.user : undefined;
 	};
 
 	render() {

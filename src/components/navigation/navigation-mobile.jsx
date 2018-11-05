@@ -32,7 +32,7 @@ class NavigationMobile extends Component {
 					className={this.state.showSideMenu ? 'visible' : 'hidden'}
 					onClick={this.handleClickMenuItem}
 				>
-					<SideMenu />
+					<SideMenu isAuthenticated={this.props.isAuthenticated} user={this.props.user} />
 				</div>
 				<ul id="navbar">
 					<li>

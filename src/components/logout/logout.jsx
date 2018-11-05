@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import JWTHelper from '../utility/jwt';
 
 class Logout extends Component {
 	constructor(props) {
@@ -8,8 +9,10 @@ class Logout extends Component {
 	}
 
 	componentDidMount() {
+		console.log('LOGGING OUT');
 		// clear localstorage
-		window.localStorage.removeItem(process.env.REACT_APP_JWT_KEY);
+		JWTHelper.clearToken();
+		this.props.logoutCallback();
 		// redirect
 		this.props.history.push('/');
 	}

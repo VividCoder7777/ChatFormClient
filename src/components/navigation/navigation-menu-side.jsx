@@ -16,7 +16,7 @@ class SideMenu extends Component {
 		return (
 			<div>
 				<ul id="side-menu" onClick={this.handleClickMenuItem}>
-					<MenuItems />
+					<MenuItems isAuthenticated={this.props.isAuthenticated} user={this.props.user} />
 				</ul>
 			</div>
 		);

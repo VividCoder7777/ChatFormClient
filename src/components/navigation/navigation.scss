@@ -13,6 +13,14 @@
 	li {
 		line-height: 3.14;
 		padding: 0 1rem;
+		position: relative;
+	}
+
+	li > div {
+	}
+
+	li > div > ul {
+		list-style: none;
 	}
 
 	#menu {

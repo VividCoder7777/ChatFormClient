@@ -12,7 +12,7 @@ class navigation extends Component {
 		return (
 			<div className="black">
 				<ul id="navbar">
-					<MenuItems />
+					<MenuItems isAuthenticated={this.props.isAuthenticated} user={this.props.user} />
 				</ul>
 			</div>
 		);

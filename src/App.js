@@ -19,11 +19,13 @@ class App extends Component {
 		this.state = {
 			isMobile: false,
 			isAuthenticated: false,
-			checkedAuthStatus: false
+			checkedAuthStatus: false,
+			user: {}
 		};
 	}
 
 	authCallback = () => {
+		console.log('AUTH CALLBACK');
 		if (JWTHelper.hasToken()) {
 			UserAPI.isAuthenticated(JWTHelper.getAuthToken()).then((result) => {
 				console.log('results are ', result);
@@ -42,9 +44,16 @@ class App extends Component {
 			});
 		} else {
 			this.setState({
-				checkedAuthStatus: true
+				checkedAuthStatus: true,
+				isAuthenticated: false
 			});
 		}
+	};
+
+	logoutCallback = () => {
+		this.setState({
+			isAuthenticated: false
+		});
 	};
 
 	componentDidMount() {
@@ -75,22 +84,56 @@ class App extends Component {
 		});
 	}
 
+	// get data
+	loginCallback = (data) => {
+		let token = data.token;
+		let user = data.user;
+		this.setState({
+			isAuthenticated: token ? true : false,
+			user
+		});
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<Route
 					render={(props) => {
 						if (this.state.isMobile) {
-							return <NavBarMobile />;
+							return (
+								<NavBarMobile
+									{...props}
+									isAuthenticated={this.state.isAuthenticated}
+									user={this.state.user}
+								/>
+							);
 						} else {
-							return <NavBar />;
+							return (
+								<NavBar
+									{...props}
+									isAuthenticated={this.state.isAuthenticated}
+									user={this.state.user}
+								/>
+							);
 						}
 					}}
 				/>
 				<div id="content">
 					<Switch>
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/logout" component={Logout} />
+						<Route
+							exact
+							path="/login"
+							render={(props) => {
+								return <Login {...props} loginCallback={this.loginCallback} />;
+							}}
+						/>
+						<Route
+							exact
+							path="/logout"
+							render={(props) => {
+								return <Logout {...props} logoutCallback={this.logoutCallback} />;
+							}}
+						/>
 						<Route path="/register" component={Register} />
 						<Route exact path="/" component={Home} />
 						<Route

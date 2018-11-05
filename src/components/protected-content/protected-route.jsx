@@ -5,13 +5,13 @@ import JWTHelper from '../utility/jwt';
 
 class ProtectedRoute extends Component {
 	componentDidMount() {
+		console.log('componentdidmount CALLBACK TIME');
 		this.props.authCallback();
 	}
 
 	authCallback = () => {};
 
 	displayContent = () => {
-		console.log(this.props.checkedAuthStatus);
 		if (this.props.checkedAuthStatus) {
 			if (this.props.isAuthenticated) {
 				// return routes

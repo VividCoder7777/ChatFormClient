@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './login.scss';
 import UserAPI from '../utility/user-api';
 import { Link } from 'react-router-dom';
+import JWTHelper from '../utility/jwt';
 
 class Login extends Component {
 	constructor(props) {
@@ -28,16 +29,13 @@ class Login extends Component {
 				password: event.target.elements['password'].value
 			})
 				.then((result) => {
-					console.log(result.data);
 					if (result.data.errors) {
-						console.log('THERE ARE ERRORS');
-
 						this.setState({ invalidLogin: true });
 					} else {
 						// successful, redirect user after obtaining web token
-						console.log('REDIRECTING!');
 
 						this.storeToken(result.data.token);
+						this.props.loginCallback(result.data);
 						this.props.history.push(result.data.redirect);
 					}
 				})
@@ -77,7 +75,7 @@ class Login extends Component {
 
 	storeToken = (value) => {
 		// store token in local storage
-		window.localStorage.setItem(process.env.REACT_APP_JWT_KEY, value);
+		JWTHelper.setToken(value);
 	};
 
 	displayMessage = () => {
