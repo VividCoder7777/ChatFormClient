@@ -16,6 +16,11 @@
 		position: relative;
 	}
 
+	li div {
+		padding: 0 7.5px;
+		background: rgb(158, 14, 14);
+	}
+
 	.submenu {
 		ul {
 			list-style: none;
@@ -43,6 +48,10 @@
 		border: 1px solid gray;
 		font-size: 0.8rem;
 		background: rgb(158, 14, 14);
+
+		div {
+			background: white;
+		}
 	}
 
 	#menu {
@@ -67,36 +76,37 @@
 	background: rgb(36, 34, 34);
 }
 
-#side-menu {
-	height: 100%;
-	width: 80%;
-	list-style-type: none;
-	margin: 0;
-	padding: 0 0 0 10px;
-
-	#user-actions {
-		list-style: none;
-		padding-left: 0;
-	}
-
-	li {
-		line-height: 1.6;
-	}
-
-	li:active {
-		font-weight: bold;
-	}
-
-	.submenu ul {
-	}
-}
-
 #side {
 	height: 100%;
 	width: 80%;
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: rgb(231, 38, 38);
+	background-color: lighten(rgb(158, 14, 14), 15%);
 	z-index: 9999;
+	transition: all 2sec;
+
+	#side-menu {
+		height: 100%;
+		list-style-type: none;
+		margin: 0 !important;
+		padding: 0 0 0 10px;
+
+		#user-actions {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		li {
+			font-size: 1.2rem;
+			line-height: 1.6;
+		}
+
+		li:active {
+			font-weight: bold;
+		}
+
+		.submenu ul {
+		}
+	}
 }

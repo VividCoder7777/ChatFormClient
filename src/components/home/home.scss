@@ -1,22 +1,43 @@
 $font-outline: rgb(87, 10, 10);
-$outline-border: 0.5px;
+
+$desktop: 450px;
+
+@mixin desktop {
+	@media (min-width: #{$desktop}) {
+		@content;
+	}
+}
+
 #container {
 	position: relative;
-	#company-name {
-		text-align: center;
-		font-family: 'Josefin Slab', serif;
-		position: absolute;
-		color: rgb(228, 212, 212);
-		top: 0;
-		right: 2.5%;
-		text-shadow: -$outline-border -$outline-border 0 $font-outline, $outline-border -$outline-border 0 $font-outline,
-			-$outline-border $outline-border 0 $font-outline, 1px 1px 0 $font-outline;
-	}
 
 	#banner {
 		img {
 			display: inline-block;
 			width: 100%;
+		}
+
+		#banner-text {
+			position: absolute;
+			top: 15%;
+			right: 2.5%;
+			text-align: right;
+			font-family: 'Exo', sans-serif;
+			color: rgba(167, 87, 12, 0.952);
+			line-height: 1.6;
+
+			#company-name {
+				font-weight: bold;
+			}
+			p {
+				margin: 0;
+				text-decoration: underline;
+			}
+
+			h1 {
+				margin: 0;
+				font-size: 1.7rem;
+			}
 		}
 	}
 }

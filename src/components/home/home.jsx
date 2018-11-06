@@ -13,7 +13,10 @@ class Home extends Component {
 		return (
 			<div id="container">
 				<div id="banner">
-					<h1 id="company-name">Von Legacy</h1>
+					<div id="banner-text">
+						<h1 id="company-name">Von Legacy</h1>
+						<p>Premium Wear</p>
+					</div>
 					<img src={banner} />
 				</div>
 				<Link to="/login">Click Here To Login</Link>

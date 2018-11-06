@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import Login from './components/login/login';
 import Home from './components/home/home';
@@ -158,7 +158,7 @@ class App extends Component {
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>
-				<div>
+				<div id="footer">
 					<Footer />
 				</div>
 			</div>
