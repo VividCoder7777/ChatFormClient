@@ -2,9 +2,20 @@ import axios from 'axios';
 
 class LoginAPI {
 	constructor() {
+		let baseURL = '';
+
+		switch (process.env.NODE_ENV) {
+			case 'development':
+				baseURL = process.env.REACT_APP_LOGIN_DEV;
+				break;
+			case 'production':
+				baseURL = process.env.REACT_APP_LOGIN_PROD;
+				break;
+			default:
+				baseURL = process.env.REACT_APP_LOGIN_DEV;
+		}
 		this.instance = axios.create({
-			// TODO: add one for PROD
-			baseURL: process.env.REACT_APP_LOGIN_DEV
+			baseURL: baseURL
 			//withCredentials: true
 		});
 	}
