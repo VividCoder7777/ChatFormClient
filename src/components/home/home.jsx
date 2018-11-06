@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
+import banner from '../../resources/images/busbanner.jpeg';
+import './home.scss';
 
 class Home extends Component {
 	constructor(props) {
@@ -9,8 +11,11 @@ class Home extends Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Home</h1>
+			<div id="container">
+				<div id="banner">
+					<h1 id="company-name">Von Legacy</h1>
+					<img src={banner} />
+				</div>
 				<Link to="/login">Click Here To Login</Link>
 			</div>
 		);
