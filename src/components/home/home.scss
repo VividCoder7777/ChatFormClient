@@ -29,10 +29,11 @@ $desktop: 450px;
 			right: 2.5%;
 			text-align: right;
 			font-family: 'Exo', sans-serif;
-			color: rgb(150, 65, 65);
+			color: rgb(226, 75, 75);
 			line-height: 1.6;
 			box-sizing: border-box;
-
+			padding: 5px;
+			border: 3px solid rgb(226, 75, 75);
 			#company-name {
 				font-weight: bold;
 			}
