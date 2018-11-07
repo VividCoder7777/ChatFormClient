@@ -12,6 +12,9 @@ class Home extends Component {
 	render() {
 		return (
 			<div id="container">
+				<div id="company">
+					<p>VON LEGACY</p>
+				</div>
 				<div id="sales-pitch">
 					<p>
 						Free Shipping On Orders Over <span className="underline">$100</span>
@@ -19,7 +22,6 @@ class Home extends Component {
 				</div>
 				<div id="banner">
 					<div id="banner-text">
-						<h1 id="company-name">Von Legacy</h1>
 						<p>Premium Wear</p>
 					</div>
 					<img src={banner} />
