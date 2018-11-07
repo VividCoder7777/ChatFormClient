@@ -98,14 +98,19 @@
 		}
 
 		li {
-			padding-left: 1rem;
-			padding-top: 5px;
-			padding-bottom: 5px;
 			text-align: left;
 			font-size: 1.2rem;
 			line-height: 1.6;
 			border-bottom: 1px solid rgb(124, 109, 109);
 			color: white;
+		}
+
+		li a {
+			padding-left: 1rem;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			display: inline-block;
+			width: 100%;
 		}
 
 		li:active {
