@@ -34,7 +34,7 @@ class NavigationMobile extends Component {
 				>
 					<SideMenu isAuthenticated={this.props.isAuthenticated} user={this.props.user} />
 				</div>
-				<ul id="navbar">
+				<ul id="navbar-mobile">
 					<li>
 						<div>
 							<img src={MenuIcon} id="menu" onClick={this.handleClickOnMenu} alt="menu" />

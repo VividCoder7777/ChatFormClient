@@ -81,8 +81,8 @@
 	width: 80%;
 	position: fixed;
 	top: 0;
-	left: 0;
-	background-color: lighten(rgb(158, 14, 14), 15%);
+	right: 0;
+	background-color: lighten(rgb(110, 9, 9), 15%);
 	z-index: 9999;
 	transition: all 2sec;
 
@@ -90,23 +90,101 @@
 		height: 100%;
 		list-style-type: none;
 		margin: 0 !important;
-		padding: 0 0 0 10px;
+		padding: 0 0 0 0;
 
 		#user-actions {
 			list-style: none;
-			padding-left: 0;
+			padding: 0;
 		}
 
 		li {
+			padding-left: 1rem;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			text-align: left;
 			font-size: 1.2rem;
 			line-height: 1.6;
+			border-bottom: 1px solid rgb(124, 109, 109);
+			color: white;
 		}
 
 		li:active {
-			font-weight: bold;
+			background: lighten(rgb(110, 9, 9), 30%);
 		}
+	}
+}
 
-		.submenu ul {
+#navbar-mobile {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	padding: 0;
+	color: white;
+	font-size: 1.2rem;
+	margin: 0;
+	width: auto;
+	max-width: 90rem;
+	margin: auto;
+	justify-content: flex-end;
+
+	li {
+		line-height: 3.14;
+		padding: 0;
+		position: relative;
+	}
+
+	li div {
+		padding: 0 7.5px;
+		background: rgb(158, 14, 14);
+	}
+
+	.submenu {
+		ul {
+			list-style: none;
+			padding: 0;
+
+			li {
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+
+			li:hover {
+				font-weight: bold;
+			}
 		}
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		z-index: 20000;
+		color: white;
+		text-align: center;
+		border-bottom-left-radius: 25px;
+		border-bottom-right-radius: 25px;
+		border: 1px solid gray;
+		font-size: 0.8rem;
+		background: rgb(158, 14, 14);
+
+		div {
+			background: white;
+		}
+	}
+
+	#menu {
+		max-height: 50px;
+		max-width: 50px;
+		vertical-align: middle;
+	}
+
+	#user-menu:hover .submenu {
+		display: block;
+	}
+
+	#user-actions {
+		list-style: none !important;
+		padding: 0;
+		margin-left: auto;
+		background: rgb(158, 14, 14);
 	}
 }
