@@ -61,7 +61,6 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		console.log(process.env);
 		let viewportWidth = document.documentElement.clientWidth;
 
 		// TODO: make this mobile value an env variable?

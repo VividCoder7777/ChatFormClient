@@ -12,6 +12,11 @@ class Home extends Component {
 	render() {
 		return (
 			<div id="container">
+				<div id="sales-pitch">
+					<p>
+						Free Shipping On Orders Over <span className="underline">$100</span>
+					</p>
+				</div>
 				<div id="banner">
 					<div id="banner-text">
 						<h1 id="company-name">Von Legacy</h1>
@@ -19,7 +24,9 @@ class Home extends Component {
 					</div>
 					<img src={banner} />
 				</div>
-				<Link to="/login">Click Here To Login</Link>
+				<div>
+					<Link to="/login">Click Here To Login</Link>
+				</div>
 			</div>
 		);
 	}

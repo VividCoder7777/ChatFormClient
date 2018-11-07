@@ -9,9 +9,15 @@ $desktop: 450px;
 }
 
 #container {
-	position: relative;
+	#sales-pitch {
+		text-align: center;
+		font-weight: bold;
+		font-size: 0.8rem;
+	}
 
 	#banner {
+		position: relative;
+
 		img {
 			display: inline-block;
 			width: 100%;
@@ -19,19 +25,19 @@ $desktop: 450px;
 
 		#banner-text {
 			position: absolute;
-			top: 15%;
+			top: 5%;
 			right: 2.5%;
 			text-align: right;
 			font-family: 'Exo', sans-serif;
-			color: rgba(167, 87, 12, 0.952);
+			color: rgb(150, 65, 65);
 			line-height: 1.6;
+			box-sizing: border-box;
 
 			#company-name {
 				font-weight: bold;
 			}
 			p {
 				margin: 0;
-				text-decoration: underline;
 			}
 
 			h1 {
