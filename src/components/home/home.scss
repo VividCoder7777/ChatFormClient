@@ -13,6 +13,8 @@ $desktop: 450px;
 		text-align: center;
 		font-weight: bold;
 		font-size: 0.8rem;
+		padding-top: 5px;
+		padding-bottom: 5px;
 	}
 
 	#banner {
@@ -25,17 +27,17 @@ $desktop: 450px;
 
 		#banner-text {
 			position: absolute;
-			top: 5%;
-			right: 2.5%;
+			top: 15%;
+			right: 2%;
 			text-align: right;
 			font-family: 'Exo', sans-serif;
-			color: rgb(226, 75, 75);
+			color: rgb(0, 0, 0);
 			line-height: 1.6;
 			box-sizing: border-box;
 			padding: 5px;
-			border: 3px solid rgb(226, 75, 75);
-			background: white;
-			opacity: 1;
+			border: 3px solid rgb(0, 0, 0);
+			box-shadow: 3px 3px;
+
 			#company-name {
 				font-weight: bold;
 			}
@@ -47,6 +49,19 @@ $desktop: 450px;
 				margin: 0;
 				font-size: 1.7rem;
 			}
+		}
+	}
+
+	#company {
+		text-align: center;
+		background: white;
+		color: black;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		p {
+			margin: 0;
+			padding: 1rem 0;
+			font-family: 'Exo', sans-serif;
 		}
 	}
 }
