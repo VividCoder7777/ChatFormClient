@@ -14,7 +14,7 @@ class MenuItems extends Component {
 		if (this.props.isAuthenticated) {
 			return (
 				<div id="user-menu">
-					<Link to="protected/profile">{user ? user.username : 'Logout'}</Link>
+					<Link to="/protected/profile">{user ? user.username : 'Logout'}</Link>
 					<div className="submenu">
 						<ul>
 							<li>
