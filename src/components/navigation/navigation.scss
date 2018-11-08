@@ -70,6 +70,11 @@ $nav-color: rgb(231, 74, 74);
 
 .black {
 	background: black;
+	position: sticky;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 99999;
 }
 
 #side {
@@ -127,7 +132,10 @@ $nav-color: rgb(231, 74, 74);
 	max-width: 90rem;
 	margin: auto;
 	justify-content: flex-end;
-
+	position: sticky;
+	top: 0;
+	right: 0;
+	left: 0;
 	li {
 		line-height: 3.14;
 		padding: 0;

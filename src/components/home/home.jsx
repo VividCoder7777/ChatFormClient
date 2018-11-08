@@ -30,6 +30,7 @@ class Home extends Component {
 					<img src={banner} />
 				</div>
 				<div id="wardrobe">
+					<h1>The Gentlemen Collection</h1>
 					<div className="clothes-item">
 						<img src={Vest} />
 						<p>Keep Up With The Lastest Trends</p>
