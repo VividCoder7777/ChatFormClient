@@ -92,7 +92,7 @@ $nav-color: rgb(231, 74, 74);
 		list-style-type: none;
 		margin: 0 !important;
 		padding: 0 0 0 0;
-
+		border-bottom: 1px solid rgb(255, 252, 252);
 		#user-actions {
 			list-style: none;
 			padding: 0;
@@ -102,8 +102,9 @@ $nav-color: rgb(231, 74, 74);
 			text-align: left;
 			font-size: 1.2rem;
 			line-height: 1.6;
-			border-bottom: 1px solid rgb(124, 109, 109);
+			border-bottom: 1px solid rgb(255, 252, 252);
 			color: white;
+			padding: 0.5rem 0;
 		}
 
 		li a {
@@ -112,6 +113,16 @@ $nav-color: rgb(231, 74, 74);
 			padding-bottom: 5px;
 			display: inline-block;
 			width: 100%;
+		}
+
+		ul {
+			display: inline-block;
+			width: 100%;
+			list-style: none;
+			padding: 0;
+			li {
+				border: none;
+			}
 		}
 
 		li:active {

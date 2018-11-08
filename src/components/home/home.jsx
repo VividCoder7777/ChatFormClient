@@ -12,6 +12,16 @@ class Home extends Component {
 		this.state = {};
 	}
 
+	displayUserMessage = () => {
+		const isMember = this.props.isAuthenticated;
+
+		if (isMember) {
+			return <Link to="/protected/shop">Start Shopping Now</Link>;
+		} else {
+			return <Link to="/register">Become A Member Today</Link>;
+		}
+	};
+
 	render() {
 		return (
 			<div id="container">
@@ -48,7 +58,7 @@ class Home extends Component {
 					<hr />
 					<div id="member">
 						<h2>Access The Exclusive Colleciton</h2>
-						<Link to="/register">Become A Member Today</Link>
+						{this.displayUserMessage()}
 					</div>
 				</div>
 			</div>

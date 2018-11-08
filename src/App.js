@@ -141,7 +141,13 @@ class App extends Component {
 							}}
 						/>
 						<Route path="/register" component={Register} />
-						<Route exact path="/" component={Home} />
+						<Route
+							exact
+							path="/"
+							render={(props) => {
+								return <Home {...props} isAuthenticated={this.state.isAuthenticated} />;
+							}}
+						/>
 						<Route
 							path="/protected"
 							render={(props) => {
