@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import banner from '../../resources/images/busbanner.jpeg';
 import './home.scss';
+import Vest from '../../resources/images/clothes/vest.png';
+import DressShirt from '../../resources/images/clothes/dress-shirt.png';
+import Collar from '../../resources/images/clothes/collar.png';
 
 class Home extends Component {
 	constructor(props) {
@@ -27,8 +30,22 @@ class Home extends Component {
 					<img src={banner} />
 				</div>
 				<div id="wardrobe">
-					<div>
-						<Link to="/login">Become Click Here To Login</Link>
+					<div className="clothes-item">
+						<img src={Vest} />
+						<p>Keep Up With The Lastest Trends</p>
+					</div>
+					<hr />
+					<div className="clothes-item">
+						<img src={DressShirt} />
+						<p>Keep Up With The Lastest Trends</p>
+					</div>
+					<hr />
+					<div className="clothes-item">
+						<img src={Collar} />
+						<p>Keep Up With The Lastest Trends</p>
+					</div>
+					<div id="member">
+						<Link to="/register">Become A Member Today</Link>
 					</div>
 				</div>
 			</div>
