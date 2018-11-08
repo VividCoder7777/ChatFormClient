@@ -114,10 +114,6 @@ $desktop-largest: 1450px;
 			}
 		}
 
-		#member {
-			text-align: center;
-		}
-
 		.clothes-item {
 			display: flex;
 			flex-direction: row;
@@ -182,9 +178,12 @@ $desktop-largest: 1450px;
 	#member {
 		margin-top: 5rem;
 		margin-bottom: 5rem;
+		text-align: center;
 
 		@include desktop {
 			font-size: 1.5rem;
+			padding-top: 1.5rem;
+			padding-bottom: 3rem;
 		}
 		a {
 			display: block;
