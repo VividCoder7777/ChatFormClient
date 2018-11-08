@@ -8,9 +8,12 @@ class Footer extends Component {
 	}
 	render() {
 		return (
-			<div>
+			<div id="footcon">
 				<ul>
-					<li>Mock Footer</li>
+					<li>About</li>
+					<li>Contact</li>
+					<li>Location</li>
+					<li>Careers</li>
 				</ul>
 			</div>
 		);

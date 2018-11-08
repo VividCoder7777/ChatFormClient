@@ -27,6 +27,7 @@ input,
 textarea,
 select,
 button {
+	border: 1px solid #cccccc !important;
 	-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
 	-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
 	box-sizing: border-box;
@@ -45,18 +46,18 @@ button {
 }
 
 #root {
-	min-height: 100%;
+	min-height: 100vh;
 	height: 100%;
 	.App {
-		min-height: 100%;
+		min-height: 100vh;
 		height: 100%;
 
 		#content {
-			min-height: 75%;
+			min-height: 75vh;
 		}
 
 		#footer {
-			min-height: 25%;
+			min-height: 15vh;
 			background: rgb(32, 29, 29);
 			color: white;
 			ul {

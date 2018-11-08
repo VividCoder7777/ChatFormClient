@@ -33,19 +33,21 @@ class Home extends Component {
 					<h1>The Gentlemen Collection</h1>
 					<div className="clothes-item">
 						<img src={Vest} />
-						<p>Keep Up With The Lastest Trends</p>
+						<p>Keep Up With The Lastest Trends.</p>
 					</div>
 					<hr />
 					<div className="clothes-item">
 						<img src={DressShirt} />
-						<p>Keep Up With The Lastest Trends</p>
+						<p>Tailored to Perfection, For All Your Needs.</p>
 					</div>
 					<hr />
 					<div className="clothes-item">
 						<img src={Collar} />
-						<p>Keep Up With The Lastest Trends</p>
+						<p>A Style That Keeps You Feeling You</p>
 					</div>
+					<hr />
 					<div id="member">
+						<h2>Access The Exclusive Colleciton</h2>
 						<Link to="/register">Become A Member Today</Link>
 					</div>
 				</div>
