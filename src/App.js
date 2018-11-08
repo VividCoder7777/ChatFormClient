@@ -27,7 +27,6 @@ class App extends Component {
 	checkIfUserIsAuthenticated = () => {
 		if (JWTHelper.hasToken()) {
 			UserAPI.isAuthenticated(JWTHelper.getAuthToken()).then((result) => {
-				console.log('results are ', result);
 				if (result.data.user) {
 					this.setState({
 						checkedAuthStatus: true,
@@ -64,7 +63,7 @@ class App extends Component {
 		let viewportWidth = document.documentElement.clientWidth;
 
 		// TODO: make this mobile value an env variable?
-		let mobileWidth = 457;
+		let mobileWidth = 470;
 
 		if (viewportWidth <= mobileWidth) {
 			this.setState({

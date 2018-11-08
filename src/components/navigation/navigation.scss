@@ -28,7 +28,8 @@ $nav-color: rgb(231, 74, 74);
 			}
 
 			li:hover {
-				font-weight: bold;
+				color: black;
+				text-decoration: underline;
 			}
 		}
 		display: none;
@@ -43,7 +44,7 @@ $nav-color: rgb(231, 74, 74);
 		border-bottom-right-radius: 25px;
 		border: 1px solid gray;
 		font-size: 0.8rem;
-		background: rgb(158, 14, 14);
+		background: #e74a4a;
 
 		div {
 			background: white;
