@@ -9,7 +9,7 @@ class Profile extends Component {
 	render() {
 		return (
 			<div>
-				<Construction message="Profile Page Is Still In Construction. Sorry For The inconvenience" />
+				<Construction message="Profile Page Is Still In Construction. Sorry For The Inconvenience" />
 			</div>
 		);
 	}

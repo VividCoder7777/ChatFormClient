@@ -9,7 +9,7 @@ class Shop extends Component {
 	render() {
 		return (
 			<div>
-				<Construction message="Shop Page Is Still In Construction. Sorry For The inconvenience" />
+				<Construction message="Shop Page Is Still In Construction. Sorry For The Inconvenience" />
 			</div>
 		);
 	}
