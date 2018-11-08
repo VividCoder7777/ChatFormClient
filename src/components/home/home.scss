@@ -65,26 +65,9 @@ $desktop-largest: 1450px;
 			padding: 5px;
 			border: 3px solid rgb(0, 0, 0);
 			box-shadow: 3px 3px;
-
+			padding: 1rem;
+			font-size: 3vw;
 			$desktop: 450px;
-
-			@include tablet {
-				font-size: 1.5rem;
-			}
-
-			@include desktop {
-				font-size: 1.8rem;
-			}
-
-			@include desktop-big {
-				font-size: 2rem;
-				padding: 1.5rem;
-			}
-
-			@include desktop-largest {
-				font-size: 2rem;
-				padding: 1.5rem;
-			}
 
 			#company-name {
 				font-weight: bold;
@@ -106,9 +89,9 @@ $desktop-largest: 1450px;
 		color: black;
 		padding-top: 5px;
 		padding-bottom: 5px;
-
+		font-size: 6vw;
 		@include desktop {
-			font-size: 2.3rem;
+			font-size: 4.5vw;
 		}
 		p {
 			margin: 0;

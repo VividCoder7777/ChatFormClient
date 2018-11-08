@@ -2,20 +2,32 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import UserAPI from '../utility/user-api';
 import JWTHelper from '../utility/jwt';
+import Shop from './shop';
+import Profile from './profile';
 
 class ProtectedRoute extends Component {
 	componentDidMount() {
-		console.log('componentdidmount CALLBACK TIME');
 		this.props.authCallback();
 	}
 
 	authCallback = () => {};
 
+	displayAuthRoutes = () => {
+		const route = this.props.match.url;
+
+		return (
+			<div>
+				<Route path={route + '/shop'} component={Shop} />
+				<Route path={route + '/profile'} component={Profile} />
+			</div>
+		);
+	};
+
 	displayContent = () => {
 		if (this.props.checkedAuthStatus) {
 			if (this.props.isAuthenticated) {
 				// return routes
-				return <p>Wow you authenticated</p>;
+				return this.displayAuthRoutes();
 			} else {
 				return (
 					<Redirect
